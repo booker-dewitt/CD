@@ -33,6 +33,8 @@ import android.widget.Toast;
 	
 	public class ChooseAreaActivity extends Activity {
 		
+		private boolean isFromWeatherActivity;
+		
 		public static final int LEVEL_PROVINCE = 0;
 		public static final int LEVEL_CITY = 1;
 		public static final int LEVEL_COUNTY = 2;
@@ -70,9 +72,11 @@ import android.widget.Toast;
 		protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
+		isFromWeatherActivity = getIntent().getBooleanExtra("from_weather_activity", false);
+		
 		SharedPreferences prefs = PreferenceManager.
 				getDefaultSharedPreferences(this);
-				if (prefs.getBoolean("city_selected", false)) {
+				if (prefs.getBoolean("city_selected", false) && isFromWeatherActivity) {
 				Intent intent = new Intent(this, WeatherActivity.class);
 				startActivity(intent);
 				finish();
@@ -86,6 +90,7 @@ import android.widget.Toast;
 		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dataList);
 		listView.setAdapter(adapter);
 		coolWeatherDB = CoolWeatherDB.getInstance(this);
+		
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> arg0, View view, int index,
 		long arg3) {
@@ -245,7 +250,13 @@ import android.widget.Toast;
 	} else if (currentLevel == LEVEL_CITY) {
 	queryProvinces();
 	} else {
+		if(isFromWeatherActivity){
+			Intent intent = new Intent(this,WeatherActivity.class);
+			startActivity(intent);
+		}
 	finish();
 	}
 	}
+	
+	
 	}

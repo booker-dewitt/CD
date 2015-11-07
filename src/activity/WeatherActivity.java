@@ -54,6 +54,8 @@ public class WeatherActivity extends Activity implements android.view.View.OnCli
 	* 更新天气按钮
 	*/
 	private Button refreshWeather;
+	
+	private Button toChoose;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
@@ -69,6 +71,11 @@ public class WeatherActivity extends Activity implements android.view.View.OnCli
 	currentDateText = (TextView) findViewById(R.id.current_date);
 	switchCity = (Button) findViewById(R.id.switch_city);
 	refreshWeather = (Button) findViewById(R.id.refresh_weather);
+	switchCity.setOnClickListener(this);
+	refreshWeather.setOnClickListener(this);
+	
+	
+	
 	String countyCode = getIntent().getStringExtra("county_code");
 	if (!TextUtils.isEmpty(countyCode)) {
 	// 有县级代号时就去查询天气
@@ -80,18 +87,21 @@ public class WeatherActivity extends Activity implements android.view.View.OnCli
 	// 没有县级代号时就直接显示本地天气
 	showWeather();
 	}
-	switchCity.setOnClickListener(this);
-	refreshWeather.setOnClickListener(this);
+	
 	}
 	@Override
+	
+	
 	public void onClick(View v) {
 	switch (v.getId()) {
+	
 	case R.id.switch_city:
-	Intent intent = new Intent(MyApplication.getContext(), ChooseAreaActivity.class);
-	intent.putExtra("from_weather_activity", true);
-		startActivity(intent);
+	Intent intent = new Intent(this, ChooseAreaActivity.class);
+	//intent.putExtra("from_weather_activity", true);
+		startActivity(intent);	
 		finish();
 	break;
+	
 	case R.id.refresh_weather:
 	publishText.setText("同步中...");
 	SharedPreferences prefs = PreferenceManager.
