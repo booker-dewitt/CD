@@ -1,6 +1,4 @@
-package com.cd.app;
-
-
+package activity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +27,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends Activity {
+public class ChooseAreaActivity extends Activity {
 	
 	public static final int LEVEL_PROVINCE = 0;
 	public static final int LEVEL_CITY = 1;
@@ -191,7 +189,7 @@ runOnUiThread(new Runnable() {
 @Override
 public void run() {
 closeProgressDialog();
-Toast.makeText(MainActivity.this,
+Toast.makeText(ChooseAreaActivity.this,
 "º”‘ÿ ß∞‹", Toast.LENGTH_SHORT).show();
 }
 });
@@ -231,4 +229,3 @@ finish();
 }
 }
 }
-
