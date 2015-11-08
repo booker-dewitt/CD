@@ -25,7 +25,7 @@
             android:layout_height="50dp"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
-            android:background="@drawable/rabbit"
+            android:background="@drawable/back2"
             
             />
         
@@ -34,7 +34,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentRight="true"
-            android:background="@drawable/bird"
+            android:background="@drawable/reload"
             />
         <!-- <Button 
             android:id="@+id/tochoose"

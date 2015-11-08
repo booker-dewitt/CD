@@ -33,6 +33,8 @@ import android.widget.Toast;
 	
 	public class ChooseAreaActivity extends Activity {
 		
+		
+		
 		private boolean isFromWeatherActivity;
 		
 		public static final int LEVEL_PROVINCE = 0;
